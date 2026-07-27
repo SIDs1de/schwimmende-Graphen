@@ -97,5 +97,15 @@
 
     "unicorn/prefer-node-protocol": "error",
     "unicorn/prefer-query-selector": "off"
-  }
+  },
+
+  "overrides": [
+    {
+      "files": ["**/*.d.ts"],
+      "rules": {
+        "import/unambiguous": "off",
+        "unicorn/filename-case": "off"
+      }
+    }
+  ]
 }
