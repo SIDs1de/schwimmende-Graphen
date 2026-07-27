@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
 
-export interface QueryClientProviderProps {
+export type QueryClientProviderProps = {
   children: ReactNode;
-}
+};
