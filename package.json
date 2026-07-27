@@ -4,18 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "bun types && vite build",
+    "dev": "bun run scss:types && concurrently -k \"vite\" \"bun run scss:types:watch\"",
+    "build": "bun run scss:types && bun types && vite build",
     "preview": "vite preview",
     "types": "tsc --noEmit",
+    "scss:types": "typed-scss-modules src --outputFolder __generated__ --exportType default --allowArbitraryExtensions --aliasPrefixes.@ src",
+    "scss:types:watch": "typed-scss-modules src --outputFolder __generated__ --exportType default --allowArbitraryExtensions --aliasPrefixes.@ src --watch --ignoreInitial",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",
-    "check": "bun types && bun run format:check && bun run lint && bun fsd",
+    "fsd": "steiger ./src",
+    "check": "bun run scss:types && bun types && bun run format:check && bun run lint && bun fsd",
     "fix": "bun run format && bun run lint:fix",
-    "prepare": "husky",
-    "fsd": "steiger ./src"
+    "prepare": "husky"
   },
   "dependencies": {
     "axios": "^1.18.1",
@@ -34,6 +36,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^10.0.4",
     "husky": "^9.1.7",
     "lint-staged": "^17.2.0",
     "oxfmt": "^0.60.0",
@@ -41,6 +44,7 @@
     "oxlint-tsgolint": "^7.0.2001",
     "sass-embedded": "^1.100.0",
     "steiger": "^0.6.0",
+    "typed-scss-modules": "^8.1.1",
     "typescript": "^7.0.2",
     "vite": "^8.1.1"
   },
