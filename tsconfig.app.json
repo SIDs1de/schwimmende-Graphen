@@ -16,6 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    "rootDirs": [".", "__generated__"],
+
     // Linting
     "noUnusedLocals": true,
     "noUnusedParameters": true,
